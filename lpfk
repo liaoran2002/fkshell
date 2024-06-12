@@ -1,0 +1,3 @@
+sqlite3 $FK/packages/packages.db <<EOF
+SELECT name AS '扩展名称',substr(url,instr(url,'/')+2,9) AS '网址',substr(substr(substr(url,instr(url,'/')+2,length(url)),instr(substr(url,instr(url,'/')+2,length(url)),'/')+1,length(substr(url,instr(url,'/')+2,length(url)))),0,instr(substr(substr(url,instr(url,'/')+2,length(url)),instr(substr(url,instr(url,'/')+2,length(url)),'/')+1,length(substr(url,instr(url,'/')+2,length(url)))),'/')) AS '作者',hash AS '哈希值',enabled AS '启用状态' FROM packages;
+EOF
