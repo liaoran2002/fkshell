@@ -40,6 +40,8 @@ crontab -e
 ```shell
 * * * * * arfk
 ```
+### lpfk
+显示服务器内扩展情况，需安装sqlite3
 
 ```
 如有脚本需求，可以发lssues
