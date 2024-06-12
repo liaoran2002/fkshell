@@ -1,0 +1,26 @@
+#!/bin/bash
+while true
+do
+    process=`ps -ef| grep freekill | grep -v grep|wc -l`;
+    proces=`netstat -ntlp|grep 9527|wc -l`;
+    if [ $process == 0 ]; then
+        echo "后台服务未启动，将自动启动";
+        screen -dmS freekill;
+        sleep 1;
+    else
+        if [ $proces == 0 ]; then
+            echo "服务器未启动,将自动启动"
+            if [ `ls -l $FK/freekill.server.error.log|awk '{print $5}'` > 1024 ]; then
+              cp $FK/freekill.server.error.log $FKL/`date "+%Y-%m-%d_%H:%M:%S"`.log
+              if [ `find $FKL -type f|wc -l` > 20 ]; then
+                 ls -tr $FKL | head -1 | xargs -i rm -rf $FKL/{}
+              fi
+            fi
+            screen -S freekill -X stuff "cd $FK"$'\n'"";
+            screen -S freekill -X stuff "./FreeKill -s"$'\n'"";
+            sleep 5
+        fi
+        echo "服务器已启动,将进行更新"
+        break;
+    fi
+done
