@@ -38,6 +38,10 @@ crontab -e
 ```
 输入
 ```shell
+FK=FreeKill文件夹的位置
+FKS=fkshell文件夹的位置
+FKL=fklog文件夹的位置
+PATH=$PATH:$FK:$FKS:$FKL
 * * * * * arfk
 ```
 ### lpfk
