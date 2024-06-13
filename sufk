@@ -1,9 +1,9 @@
 #!/bin/bash
 opfk
-if [ ! -n "$1" ] ;then
-  screen -x -S freekill -p 0 -X stuff "u "$1""$'\n'""
-else
-  echo "开始更新"
+echo "开始更新"$1
+if [ -z "$1" ] ;then
   screen -x -S freekill -p 0 -X stuff "u"$'\n'""
-  echo "更新结束"
+else
+  screen -x -S freekill -p 0 -X stuff "u "$1$'\n'""
 fi
+echo "更新"$1"结束"
