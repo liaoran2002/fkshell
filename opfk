@@ -10,9 +10,9 @@ do
     else
         if [ $proces == 0 ]; then
             echo "服务器未启动,将自动启动"
-            if [ `ls -l $FK/freekill.server.error.log|awk '{print $5}'` > 0 ]; then
+            if [ `ls -l $FK/freekill.server.error.log|awk '{print $5}'` -gt 0 ]; then
               cp $FK/freekill.server.error.log $FKL/`date "+%Y-%m-%d_%H:%M:%S"`.log
-              if [ `find $FKL -type f|wc -l` > 20 ]; then
+              if [ `find $FKL -type f|wc -l` -gt 20 ]; then
                  ls -tr $FKL | head -1 | xargs -i rm -rf $FKL/{}
               fi
             fi
