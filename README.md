@@ -41,7 +41,7 @@ crontab -e
 FK=FreeKill文件夹的位置
 FKS=fkshell文件夹的位置
 FKL=fklog文件夹的位置
-PATH=$PATH:$FK:$FKS:$FKL
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$FK:$FKS:$FKL
 * * * * * arfk
 ```
 ### lpfk
