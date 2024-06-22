@@ -46,7 +46,30 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$FK:$FKS:$FKL
 ```
 ### lpfk
 显示服务器内扩展情况，需安装sqlite3
+sqlite3安装流程
+```
+curl https://www.sqlite.org/2024/sqlite-autoconf-3460000.tar.gz --optput sqlite3.tar.gz
+tar -zxvf sqlite3.tar.gz -C .
+cd sqlite-autoconf-3460000
+./configure --prefix=想要安装的目录
+make
+make install
+vi /etc/profile.d/sqlite3.sh
+source /etc/profile.d/sqlite3.sh
+sqlite3
+```
+sqlite3.sh里要写的内容
+```
+export SQLITE3_HOME=sqlite3安装目录
+export PATH=$PATH:$SQLITE3_HOME/bin
+```
+安装好之后就可以
+```
+lpfk
+```
 
+### infk
+//等我想起来就写
 ```
 如有脚本需求，可以发lssues
 如有更好脚本，可以提交pr
