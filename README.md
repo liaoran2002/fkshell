@@ -14,8 +14,17 @@ export PATH=$PATH:$FK:$FKS:$FKL
 # 每个脚本的作用
 ### opfk
 检测服务器是否运行，服务器未运行就会自动启动服务器并自动备份服务器error_log到FKL位置
+```shell
+opfk
+```
 ### sufk
 更新服务器内扩展，可以加扩展名更新指定扩展
+例：
+更新所有扩展
+```shell
+sufk
+```
+更新扩展2hu
 ```shell
 sufk 2hu
 ```
