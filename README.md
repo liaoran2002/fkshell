@@ -1,5 +1,6 @@
 # fkshell
 # 使用前注意：
+
 ### 设置环境变量
 ```shell
 vi /etc/profile.d/fk.sh
@@ -11,6 +12,7 @@ export FKS=fkshell文件夹的位置
 export FKL=fklog文件夹的位置
 export PATH=$PATH:$FK:$FKS:$FKL
 ```
+
 # 每个脚本的作用
 ### opfk
 检测服务器是否运行，服务器未运行就会自动启动服务器并自动备份服务器error_log到FKL位置
@@ -56,7 +58,7 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$FK:$FKS:$FKL
 ### lpfk
 显示服务器内扩展情况，需安装sqlite3
 sqlite3安装流程
-```
+```shell
 curl https://www.sqlite.org/2024/sqlite-autoconf-3460000.tar.gz --optput sqlite3.tar.gz
 tar -zxvf sqlite3.tar.gz -C .
 cd sqlite-autoconf-3460000
@@ -68,17 +70,33 @@ source /etc/profile.d/sqlite3.sh
 sqlite3
 ```
 sqlite3.sh里要写的内容
-```
+```shell
 export SQLITE3_HOME=sqlite3安装目录
 export PATH=$PATH:$SQLITE3_HOME/bin
 ```
 安装好之后就可以
-```
+```shell
 lpfk
 ```
 
+### cfk
+
+服务器内存占用大于1G就重启服务器
+用于定时任务，用法和arfk相同
+
+### qfk
+重启服务器，可以用于定时任务或者手动重启服务器
+
+定时任务:
+用法和arfk相同
+手动重启:
+```shell
+qfk
+```
+
 ### infk
-//等我想起来就写
+//等我想起来就写了
+
 ```
 如有脚本需求，可以发lssues
 如有更好脚本，可以提交pr
