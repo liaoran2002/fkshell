@@ -57,6 +57,7 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$FK:$FKS:$FKL
 ```
 ### lpfk
 显示服务器内扩展情况，需安装sqlite3
+
 sqlite3安装流程
 ```shell
 curl https://www.sqlite.org/2024/sqlite-autoconf-3460000.tar.gz --optput sqlite3.tar.gz
@@ -82,13 +83,16 @@ lpfk
 ### cfk
 
 服务器内存占用大于1G就重启服务器
+
 用于定时任务，用法和arfk相同
 
 ### qfk
 重启服务器，可以用于定时任务或者手动重启服务器
 
 定时任务:
+
 用法和arfk相同
+
 手动重启:
 ```shell
 qfk
