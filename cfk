@@ -1,5 +1,5 @@
 #!/bin/bash
 process=`free -m |awk '{print $3}'|sed -n '2,2p'`;
 if  [ "$process" -gt 1024 ]; then
-	sufk
+	qfk
 fi

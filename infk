@@ -1,37 +1,30 @@
 #!/bin/bash
 opfk
-echo $1
 if [ -z "$1" ];then
     echo 请输入需要被安装的扩展的网址
-elif [ $1 == "all" ];then
-    for line in `cat $FKS/modpath`
-    do
-       fkb=`sqlite3 $FK/packages/packages.db "select count(*) from packages where url='$line'" -cmd ".headers off" | wc -l`
-       echo $fkb
-       fkn=`echo $line | awk -F / '{print $5}'`
-       if [ $fkb -eq "0" ];then
-          screen -x -S freekill -p 0 -X stuff "install $line"$'\n'""
-          echo "正在安装$fkn,稍后更新"
-          sleep 30
-       else
-          echo "扩展$fkn已经安装过了"
-       fi
-    done
 else
     fkc=`curl -i -m 5 -o /dev/null -s -w %{http_code} $1`
     if [ $fkc -eq "200" ];then
-        fkb=`sqlite3 $FK/packages/packages.db "select count(*) from packages where url='$1'" -cmd ".headers off" | wc -l`
+        fkb=`sqlite3 $FK/packages/packages.db "select count(*) from packages where url='$1'" -cmd ".headers off"`
         fkn=`echo $1 | awk -F / '{print $5}'`
         if [ $fkb -eq "0" ];then
-           echo $1 >> $FKS/modpath
-           screen -x -S freekill -p 0 -X stuff "install $1"$'\n'""
+           screen -x -S freekill -p 0 -X stuff "install $1\n"
            echo "正在安装$fkn,稍后更新"
            sleep 30
-           sufk
+           qfk
+           sleep 5
+           opfk
+           fkb=`sqlite3 $FK/packages/packages.db "select count(*) from packages where url='$1'" -cmd ".headers off"`
+           fkn=`echo $1 | awk -F / '{print $5}'`
+           if [ $fkb -eq "1" ];then
+               echo "扩展$fkn安装成功"
+           else
+               echo "扩展$fkn安装失败,请检查网络或者联系作者"
+           fi
         else
            echo "扩展$fkn已经安装过了"
         fi
     else
-        echo "$line,网址连接不上,你再检查一下吧"
+        echo "扩展安装失败,网址连接不上,你再检查一下吧"
     fi
 fi

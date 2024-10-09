@@ -1,4 +1,3 @@
 #!/bin/bash
 screen -S freekill -X quit
-sleep 3
-opfk
+true > $FKS/freekill.log

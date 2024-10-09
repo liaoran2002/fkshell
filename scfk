@@ -1,0 +1,47 @@
+#!/bin/bash
+case $1 in
+    -d)
+        echo "每日日活"
+        sqlite3 $FK/server/users.db "SELECT count(*) FROM usergameinfo WHERE strftime('%Y%m%d', lastLoginTime, 'unixepoch', 'localtime') = strftime('%Y%m%d', 'now', 'localtime')" -cmd ".headers off"
+        ;;
+    -m)
+        echo "每日月活"
+        sqlite3 $FK/server/users.db "SELECT count(*) FROM usergameinfo WHERE strftime('%Y%m', lastLoginTime, 'unixepoch', 'localtime') = strftime('%Y%m', 'now', 'localtime')" -cmd ".headers off"
+        ;;
+    -p)
+        if [ -z "$2" ]; then
+            echo "请输入玩家名称"
+            exit 1
+        fi
+        if [ -z "$3" ]; then
+            echo "玩家$2的胜率"
+            sqlite3 $FK/server/users.db "SELECT name as '名称',mode as '模式',win as '胜场',lose as '输场',draw as '平局',total as '总场数',winRate as '胜率' from playerWinrate where name='$2'" -cmd ".headers on" -cmd ".mode markdown"
+        else
+            echo "玩家$2在模式$3中的胜率"
+            sqlite3 $FK/server/users.db "SELECT name as '名称',mode as '模式',win as '胜场',lose as '输场',draw as '平局',total as '总场数',winRate as '胜率' from playerWinrate where name='$2' and mode='$3'" -cmd ".headers on" -cmd ".mode markdown"
+        fi
+        ;;
+    -w)
+        if [ -z "$2" ]; then
+            echo "请输入武将名称"
+            exit 1
+        fi
+        if [ -z "$3" ]; then
+            echo "武将$2的胜率"
+            sqlite3 $FK/server/users.db "SELECT general as '名称',mode as '模式',win as '胜场',lose as '输场',draw as '平局',total as '总数',winRate as '胜率' from generalWinRate where general='$2'" -cmd ".headers on" -cmd ".mode markdown"
+        else
+            echo "武将$2在模式$3中的胜率"
+            sqlite3 $FK/server/users.db "SELECT general as '名称',mode as '模式',win as '胜场',lose as '输场',draw as '平局',total as '总数',winRate as '胜率' from generalWinRate where general='$2' and mode='$3'" -cmd ".headers on" -cmd ".mode markdown"
+        fi
+        ;;
+    *)
+        echo "用法如下:scfk [命令] [参数]"
+        echo "命令列表:"
+        echo "-d 每日日活"
+        echo "-m 每日月活"
+        echo "-p 玩家胜率"
+        echo "-w 武将胜率"
+        echo "-h 显示此帮助信息"
+        exit 0
+        ;;
+esac

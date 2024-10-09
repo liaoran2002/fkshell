@@ -2,17 +2,17 @@
 opfk
 echo "send msg $1"
 if [ ! -n "$3" ] || [ "$3" -gt 5 ];then
-fkt=5
+    fkt=5
 else
-fkt=$3
+    fkt=$3
 fi
 if [ ! -n "$2" ] || [ "$2" -gt 10 ]; then
-    screen -x -S freekill -p 0 -X stuff "m "$1$'\n'""
+    screen -x -S freekill -p 0 -X stuff "m $1\n"
 else
     for loop in $(seq 1 $2)
     do
       echo "第$loop次播报,共$2次"
-      screen -x -S freekill -p 0 -X stuff "m "$1$'\n'""
+      screen -x -S freekill -p 0 -X stuff "m $1\n"
       if [ $loop -ne $2 ];then
       	sleep $fkt
       fi

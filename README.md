@@ -99,7 +99,69 @@ qfk
 ```
 
 ### infk
-//等我想起来就写了
+往FK服务器中安装扩展
+
+用法：
+```shell
+infk 扩展网址
+```
+
+例：
+```shell
+infk https://gitee.com/youmuKon-supreme/2hu
+```
+
+### scfk
+查询信息
+
+用法如下:scfk [-d|-m|-p|-w|-h] [参数]
+
+命令列表:
+
+-d 每日日活
+
+-m 每日月活
+
+-p 玩家胜率 
+
+-w 武将胜率
+
+-h 显示此帮助信息
+
+用法:
+
+```shell
+scfk -d
+scfk -m
+scfk -p 玩家名称
+scfk -w 武将名称
+scfk -p 玩家名称 模式名称
+scfk -w 武将名称 模式名称
+```
+
+### lsfk
+用法如下: lsfk [-p|-r|-h]
+
+-p: 显示在线玩家
+
+-r: 显示在线房间
+
+-h: 显示此帮助信息
+
+使用前注意:
+
+向~/.screenrc中添加以下内容:
+
+```shell
+logfile flush 1
+```
+用法:
+
+```shell
+lsfk -p
+lsfk -r
+lsfk -h
+```
 
 ```
 如有脚本需求，可以发lssues

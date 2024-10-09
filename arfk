@@ -7,7 +7,7 @@ if [ $process == 0 ] || [ $proces == 0 ]; then
         sleep 60;
         process=`ps -ef| grep /FreeKill | grep -v grep|wc -l`;
         if [ $process == 0 ];then
-        	sufk;
+        	opfk;
         fi 
     fi
 fi
