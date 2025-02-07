@@ -8,7 +8,7 @@ else
         fkb=`sqlite3 $FK/packages/packages.db "select count(*) from packages where url='$1'" -cmd ".headers off"`
         fkn=`echo $1 | awk -F / '{print $5}'`
         if [ $fkb -eq "0" ];then
-           screen -x -S $FKP:-freekill -p 0 -X stuff "install $1\n"
+           screen -x -S ${$FKP:-freekill} -p 0 -X stuff "install $1\n"
            echo "正在安装$fkn,稍后更新"
            sleep 30
            qfk

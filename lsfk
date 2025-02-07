@@ -2,7 +2,7 @@
 opfk
 case $1 in
     -p) 
-        screen -x -S $FKP:-freekill -p 0 -X stuff "lsplayer\n"
+        screen -x -S ${$FKP:-freekill} -p 0 -X stuff "lsplayer\n"
         sleep 1
         h=`grep -n "online" $FKS/freekill.log | tail -1 |awk -F : '{print $1}'`
         b=`grep -n "online" $FKS/freekill.log | tail -1 |awk '{print $5}'`
@@ -16,7 +16,7 @@ case $1 in
         head -$l $FKS/freekill.log | tail -$b
         ;;
     -r) 
-        screen -x -S $FKP:-freekill -p 0 -X stuff "lsroom\n"
+        screen -x -S ${$FKP:-freekill} -p 0 -X stuff "lsroom\n"
         sleep 1
         h=`grep -n "running" $FKS/freekill.log | tail -1 |awk -F : '{print $1}'`
         b=`grep -n "running" $FKS/freekill.log | tail -1 |awk '{print $5}'`

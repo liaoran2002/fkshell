@@ -2,8 +2,8 @@
 opfk
 echo "开始更新"$1
 if [ -z "$1" ] ;then
-  screen -x -S $FKP:-freekill -p 0 -X stuff "u\n"
+  screen -x -S ${$FKP:-freekill} -p 0 -X stuff "u\n"
 else
-  screen -x -S $FKP:-freekill -p 0 -X stuff "u $1\n"
+  screen -x -S ${$FKP:-freekill} -p 0 -X stuff "u $1\n"
 fi
 echo "更新"$1"结束"
