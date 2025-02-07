@@ -56,7 +56,7 @@ FKS=fkshell文件夹的位置
 FKL=fklog文件夹的位置
 FKP=FreeKill进程名
 FKPRT=FreeKill端口
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$FK:$FKS:$FKL
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$FK:$FKS:$FKL:$FKP:$FKPRT
 * * * * * arfk
 ```
 ### lpfk
