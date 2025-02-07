@@ -2,7 +2,7 @@
 while true
 do
     process=`ps -ef| grep ${FKP:-freekill} | grep -v grep|wc -l`;
-    proces=`netstat -ntlp|grep 9527|wc -l`;
+    proces=`netstat -ntlp|grep ${FKPRT:-9527}|wc -l`;
     if [ $process == 0 ]; then
         echo "后台服务未启动，将自动启动";
         screen -L -Logfile $FKS/freekill.log -dmS ${FKP:-freekill}
@@ -17,7 +17,7 @@ do
               fi
             fi
             screen -S ${FKP:-freekill} -X stuff "cd $FK"$'\n'"";
-            screen -S ${FKP:-freekill} -X stuff "./FreeKill -s"$'\n'"";
+            screen -S ${FKP:-freekill} -X stuff "./FreeKill -s ${FKPRT:-9527}"$'\n'"";
             sleep 5
         fi
         echo "服务器已启动"

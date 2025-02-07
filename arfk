@@ -1,6 +1,6 @@
 #!/bin/bash
 process=`ps -ef| grep /FreeKill | grep -v grep|wc -l`;
-proces=`netstat -ntlp|grep 9527|wc -l`;
+proces=`netstat -ntlp|grep ${FKPRT:-9527}|wc -l`;
 if [ $process == 0 ] || [ $proces == 0 ]; then
     processs=`ps -ef|grep arfk|grep -v grep|wc -l`;
     if [ $processs -lt 5 ]; then
