@@ -12,7 +12,7 @@ export FKS=fkshell文件夹的位置
 export FKL=fklog文件夹的位置
 export FKP=FreeKill进程名
 export FKPRT=FreeKill端口
-export PATH=$PATH:$FK:$FKS:$FKL
+export PATH=$PATH:$FK:$FKS:$FKL:$FKP:$FKPRT
 ```
 
 # 每个脚本的作用
