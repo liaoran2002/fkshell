@@ -10,6 +10,8 @@ vi /etc/profile.d/fk.sh
 export FK=FreeKill文件夹的位置
 export FKS=fkshell文件夹的位置
 export FKL=fklog文件夹的位置
+export FKP=FreeKill进程名
+export FKPRT=FreeKill端口
 export PATH=$PATH:$FK:$FKS:$FKL
 ```
 
@@ -52,6 +54,8 @@ crontab -e
 FK=FreeKill文件夹的位置
 FKS=fkshell文件夹的位置
 FKL=fklog文件夹的位置
+FKP=FreeKill进程名
+FKPRT=FreeKill端口
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$FK:$FKS:$FKL
 * * * * * arfk
 ```

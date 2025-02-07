@@ -4,5 +4,5 @@ if [ ! -n "$1" ] || [ ! -n "$2" ] || [ ! -n "$3" ];then
     echo "3个参数，玩家名称，道具名称，奖励名称"
 else
     echo "send msg 玩家$1在$2中获得了$3,大家快恭喜TA吧~"
-    screen -x -S freekill -p 0 -X stuff "m 玩家<b>$1</b>在<b><span style="color:lightgreen">$2</span></b>中获得了<b><span style="color:lightblue">$3</span></b>,大家快恭喜TA吧~\n"
+    screen -x -S ${FKP:-freekill} -p 0 -X stuff "m 玩家<b>$1</b>在<b><span style="color:lightgreen">$2</span></b>中获得了<b><span style="color:lightblue">$3</span></b>,大家快恭喜TA吧~\n"
 fi
